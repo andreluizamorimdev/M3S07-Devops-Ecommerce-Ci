@@ -8,7 +8,7 @@ import Checkout from '../Pages/Checkout';
 test('The page Checkout should appear', () => {
   render(
     <BrowserRouter>
-      <Checkout/>
+      <Checkout carrinho={mock} />
     </BrowserRouter>
   )
 })
