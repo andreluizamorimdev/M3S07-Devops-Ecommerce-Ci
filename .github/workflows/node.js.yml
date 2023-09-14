@@ -11,9 +11,8 @@ on:
 
 jobs:
   construcao:
-
     runs-on: ubuntu-latest
-
+    name: Construção da app
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x --configura o node
