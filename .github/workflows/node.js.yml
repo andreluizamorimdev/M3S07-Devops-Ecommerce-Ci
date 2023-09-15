@@ -12,7 +12,7 @@ on:
 jobs:
   construcao:
     runs-on: ubuntu-latest
-    name: Construção da app
+    name: Construção CI
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 18.x --configura o node
@@ -23,3 +23,25 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm run test -- --watchAll=false
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: deploy cd
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: andreluizdev
+          password: dckr_pat_jKc1rEhTytEn7WYcSNaRbbRiOlg
+          
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: andreluizdev/trindade-web
