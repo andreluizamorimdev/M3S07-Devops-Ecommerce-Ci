@@ -4,8 +4,6 @@
 name: Node.js CI -- Nome do Script
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -45,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{vars.REPO }}
+          tags: ${{vars.REPO }}:teste
